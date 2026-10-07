@@ -1,0 +1,262 @@
+=========================================
+
+PYTHON GENERAL
+
+==========================================
+
+Byte-compiled / optimized / DLL files
+
+pycache/
+*.py[cod]
+*$py.class
+
+C extensions
+
+*.so
+
+Distribution / packaging
+
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+Installer logs
+
+pip-log.txt
+pip-delete-this-directory.txt
+
+Unit test / coverage reports
+
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+Translations
+
+*.mo
+*.pot
+
+Django stuff:
+
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+
+Flask stuff
+
+instance/
+.webassets-cache
+
+Scrapy stuff
+
+.scrapy
+
+Sphinx documentation
+
+docs/_build/
+
+PyBuilder
+
+.pybuilder/
+target/
+
+Jupyter Notebook
+
+.ipynb_checkpoints
+
+IPython
+
+profile_default/
+ipython_config.py
+
+pyenv
+
+For a library or package, you might want to ignore these files since they are code
+
+For applications, you'll usually want to keep them. See: https://github.com/github/gitignore/blob/master/Python.gitignore
+
+.python-version
+
+pipenv
+
+According to pypa/pipenv#598, it is recommended to checkin Pipfile.lock into version control.
+
+However, in some cases federated projects might be better off not including it.
+
+Pipfile.lock
+
+Poetry
+
+Similar to Pipfile.lock, it is generally recommended to checkin poetry.lock into version control.
+
+This is a personal preference depending on whether you want to track dependencies.
+
+poetry.lock
+
+pdm
+
+Similar to Pipfile.lock, it is generally recommended to checkin pdm.lock into version control.
+
+pdm.lock
+
+.pdm.python
+
+.pdm-build/
+
+PEP 582; used by e.g. PDM, Hatch, and Flit
+
+pypackages/
+
+Celery stuff
+
+celerybeat-schedule
+celerybeat.pid
+
+SageMath parsed files
+
+*.sage.py
+
+Environments (Virtual environments)
+
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+Spyder project settings
+
+.spyderproject
+.spyproject
+
+Rope project settings
+
+.ropeproject
+
+mkdocs documentation
+
+/site
+
+MyPy
+
+.mypy_cache/
+.dmypy.json
+.dmypy/
+
+Pyre type checker
+
+.pyre/
+
+pytype static type analyzer
+
+.pytype/
+
+Cython debug symbols
+
+cython_debug/
+
+PyCharm
+
+.idea/
+
+VS Code
+
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+==========================================
+
+ODOO SPECIFIC
+
+==========================================
+
+Odoo log files
+
+*.log
+
+Odoo filestore (archivos adjuntos y datos binarios subidos en BD)
+
+/filestore/
+/filestore/
+.filestore/
+
+Odoo configuration files personalizables (si usas uno local)
+
+openerp-server.conf
+odoo.conf
+
+XML-RPC or testing sessions
+
+.odoo_history
+
+==========================================
+
+DJANGO SPECIFIC
+
+==========================================
+
+Static files collected by collectstatic
+
+/staticfiles/
+/staticfiles/
+
+Local settings or secrets
+
+settings_local.py
+secrets.json
+
+==========================================
+
+SISTEMA OPERATIVO
+
+==========================================
+
+macOS
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+Windows
+
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+desktop.ini
+
+Linux
+
+~*
+.Trash-*
