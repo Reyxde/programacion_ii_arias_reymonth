@@ -40,7 +40,8 @@ print("Saldo final: ", cuenta.get_saldo())
 
 
 print("=====================================================")
-print("                      TAREA")
+print("                      TAREA                          ")
+print("=====================================================")
 
 class AlmacenSemillas:
     __cantidad : int
