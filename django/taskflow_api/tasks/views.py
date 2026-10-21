@@ -39,5 +39,5 @@ def my_first_template(request):
         "titulo": "TaskFlow",
         "mensaje": "Organiza tus proyectos y tareas en un solo lugar",
     }
-    return render(request, "tasks/my_first_template.html", contexto)
+    return render(request, "tasks/my-first-template.html", contexto)
     
