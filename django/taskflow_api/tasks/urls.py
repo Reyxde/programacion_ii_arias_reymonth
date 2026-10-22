@@ -4,7 +4,7 @@ from . import views
 app_name = "tasks"   # namespace de la app — ver nota más abajo
 
 urlpatterns = [ 
-    path("", views.home, name="home"),
+    path("", views.home, name="home"),  
     path("register", views.register, name="register"), 
     path("aboutme", views.aboutme, name="Rey"), 
     path("saludo/<str:nombre>/",
@@ -16,6 +16,10 @@ urlpatterns = [
     path("my-first-template",
          views.my_first_template,
          name="my-first-template"),
+     path("leads-like",
+          views.leads_like,
+          name="leads-like")
+
 
 
 ]
