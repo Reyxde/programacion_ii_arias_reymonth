@@ -18,7 +18,7 @@ def register(request):
     """Registro de usuarios"""
     return HttpResponse("Registro de usuarios")
 
-def aboutme():
+def aboutme(request):
     """ Registro de usuario"""
     return HttpResponse("Rey")
 
@@ -39,5 +39,11 @@ def my_first_template(request):
         "titulo": "TaskFlow",
         "mensaje": "Organiza tus proyectos y tareas en un solo lugar",
     }
-    return render(request, "tasks/my_first_template.html", contexto)
-    
+    return render(request, "tasks/my-first-template.html", contexto)
+def leads_like(request):
+    contexto = {
+        "titulo": "Programador",
+        "nombre": "Reymonth",
+        "Apellido": "Arias"
+    }
+    return render(request, "leads/leads-like.html", contexto)
