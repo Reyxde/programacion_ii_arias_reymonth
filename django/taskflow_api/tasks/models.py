@@ -1,5 +1,4 @@
 from django.db import models
-import django.utils.timezone   
 
 class Project(models.Model):
     name = models.CharField(max_length=100)
