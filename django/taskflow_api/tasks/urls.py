@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+
 app_name = "tasks"   # namespace de la app — ver nota más abajo
 
 urlpatterns = [ 
@@ -18,7 +19,17 @@ urlpatterns = [
          name="my-first-template"),
      path("leads-like",
           views.leads_like,
-          name="leads-like")
+          name="leads-like"),
+     
+     path("projects", 
+          views.project_list, name="project-list"),
+
+     path("tasks/new/",
+           views.task_create, name="task_create"),
+     path("tasks/<int:pk>/edit/", views.task_edit, name="task_edit"),
+
+     path("projects/new/",
+                views.project_create, name="task_create"),
 
 
 
