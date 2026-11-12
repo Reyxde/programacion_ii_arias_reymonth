@@ -1,21 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Inicio - Biblioteca</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --danger: #ef4444;
+            --danger-hover: #dc2626;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            color: var(--text-main);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Menú principal de navegación estilo lista de tarjetas */
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .menu-list li a {
+            display: block;
+            background-color: #f1f5f9;
+            color: var(--text-main);
+            padding: 0.875rem 1.25rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s, transform 0.1s, color 0.2s;
+        }
+
+        .menu-list li a:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateX(4px);
+        }
+
+        /* Botón de Cerrar Sesión */
+        .btn-danger {
+            background-color: var(--danger);
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s;
+            font-size: 1rem;
+        }
+
+        .btn-danger:hover {
+            background-color: var(--danger-hover);
+        }
+    </style>
 </head>
 <body>
-    <h1>Bienvenido Sr(a). {{request.user.get_full_name}} a la Biblioteca</h1>
-    <p>Explora nuestra colección de libros y encuentra tu próxima lectura.</p>
-    <h2>Menu Principal</h2>
-    <ul>
-        <li><a href="{% url 'libro_list' %}">Ver Lista de Libros</a></li>
-        <li><a href="{% url 'categoria_list' %}">Lista de Categorías</a></li>
-    </ul>
-    <form method="post" action=" {%url 'logout'%}">
-        {% csrf_token %}
-        <button type="submit">Cerrar Sesión</button>
-    </form>
+
+    <div class="container">
+        <h1>Bienvenido Sr(a). {{request.user.get_full_name}} a la Biblioteca</h1>
+        <p>Explora nuestra colección de libros y encuentra tu próxima lectura.</p>
+        
+        <h2>Menú Principal</h2>
+        
+        <ul class="menu-list">
+            <li><a href="{% url 'libro_list' %}">Ver Lista de Libros</a></li>
+            <li><a href="{% url 'categoria_list' %}">Lista de Categorías</a></li>
+            <li><a href="{% url 'autor_list' %}">Lista de Autores</a></li>
+        </ul>
+
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn-danger">Cerrar Sesión</button>
+        </form>
+    </div>
+
 </body>
 </html>

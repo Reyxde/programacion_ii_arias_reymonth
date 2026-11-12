@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Autores</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --danger: #ef4444;
+            --danger-hover: #dc2626;
+            --success: #10b981;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        /* Mensajes de Django */
+        .messages {
+            margin-bottom: 1.5rem;
+        }
+        .message-alert {
+            background-color: #e0f2fe;
+            border-left: 4px solid #0284c7;
+            color: #0369a1;
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Barra de acciones / Navegación */
+        .actions-bar {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.2s, transform 0.1s;
+            display: inline-flex;
+            align-items: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-secondary {
+            background-color: #64748b;
+        }
+
+        .btn-secondary:hover {
+            background-color: #475569;
+        }
+
+        /* Tabla estilizada */
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #f1f5f9;
+            font-weight: 600;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        tbody tr:hover {
+            background-color: #f8fafc;
+        }
+
+        /* Enlaces de acciones dentro de la tabla */
+        .action-edit {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            margin-right: 1rem;
+        }
+
+        .action-edit:hover {
+            text-decoration: underline;
+        }
+
+        .action-delete {
+            color: var(--danger);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .action-delete:hover {
+            text-decoration: underline;
+        }
+
+        .empty-row {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Biblioteca</h1>
+        <h2>Listado de Autores</h2>
+
+        <!-- Sistema de mensajes de Django -->
+        {% if messages %}
+            <div class="messages">
+                {% for mensaje in messages %}
+                    <div class="message-alert">{{ mensaje }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Botones de navegación (Se corrigió la anidación inválida de <button> con <a>) -->
+        <div class="actions-bar">
+            <a href="{% url 'autor_create' %}" class="btn">+ Nuevo autor</a>
+            <a href="{% url 'home' %}" class="btn btn-secondary">Atrás</a>
+            <a href="{% url 'libro_list' %}" class="btn btn-secondary">Lista de Libros</a>
+            <a href="{% url 'categoria_list' %}" class="btn btn-secondary">Lista de Categorías</a>
+        </div>
+
+        <!-- Tabla de Contenido -->
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Nacionalidad</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for autor in autores %}
+                        <tr>
+                            <td>{{ autor.id }}</td>
+                            <td>{{ autor.nombre }}</td>
+                            <td>{{ autor.apellido }}</td>
+                            <td>{{ autor.nacionalidad }}</td>
+                            <td>
+                                <a href="{% url 'autor_update' autor.id %}" class="action-edit">Editar</a>
+                                <a href="{% url 'autor_delete' autor.pk %}" class="action-delete">Eliminar</a>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="5" class="empty-row">
+                                No existen autores registrados.
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

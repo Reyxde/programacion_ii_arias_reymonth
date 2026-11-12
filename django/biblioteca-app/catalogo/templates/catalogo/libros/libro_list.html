@@ -20,6 +20,9 @@
     <button>
             <a href=" {% url 'home'%}"> Atrás</a>
     </button>
+    <button>
+            <a href=" {% url 'categoria_list'%}"> Lista de Categorías</a>
+    </button>
     <h2>Buscar Libros </h2>
     <form method="GET">
         <p>
@@ -34,9 +37,9 @@
         </p>
         <p>
             <label for="categoria">
-                Categoria
+                Categoria: 
             </label>
-            <select id="categoria" name="categoria">
+            <select id="categoria_id" name="categoria_id">
                 <option value="">Todas las categorias</option>
                 {% for categoria in categorias %}
                 <option value="{{categoria.id}}"
@@ -47,10 +50,9 @@
                 {%endfor%}
             </select>
         </p>
+        <button type="submit">Buscar</button>
     </form>
-    <button>
-            <a href=" {% url 'categoria_list'%}"> Lista de Categorías</a>
-    </button>
+    
     <table border = "1">
         <thead>
             <tr>
