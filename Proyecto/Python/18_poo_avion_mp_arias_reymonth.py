@@ -1,4 +1,4 @@
-from Python.poo_avion_mp_arias_reymonth import Avion
+from poo_avion_mp_arias_reymonth import Avion
 
 class AvionComercial(Avion):
     def __init__(self, nombre: str):
